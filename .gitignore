@@ -1,0 +1,60 @@
+#
+# Default excludes
+#
+
+# Binaries
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.war
+*.ear
+*.sar
+*.class
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
+
+# IntelliJ project files
+*.iml
+*.iws
+*.ipr
+.idea/
+
+# eclipse project file
+.settings/
+.classpath
+.project
+
+# OS
+.DS_Store
+
+# Misc
+*.swp
+transaction.log
+
+# rebel files
+rebel.xml
+rebel-remote.xml
+
+integration/bceservice/src/main/java/test.java
+
+docker/certs/certificate-selfsigned-rootCA.key
+
+docker/certs/certificate-selfsigned-rootCA.key
+
+docker/certs/certificate-selfsigned-rootCA.pem
+
+docker/certs/certificate-selfsigned.crt
+
+docker/certs/certificate-selfsigned.csr
+
+docker/certs/certificate-selfsigned.key

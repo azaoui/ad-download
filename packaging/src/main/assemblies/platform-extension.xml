@@ -1,0 +1,30 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.1 http://maven.apache.org/xsd/assembly-1.1.1.xsd">
+    <id>platform-extension</id>
+    <formats>
+        <format>war</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+
+
+    <!-- surcharge documentPreview.js -->
+    <fileSets>
+        <fileSet>
+            <directory>target/platform-extension</directory>
+            <outputDirectory>/</outputDirectory>
+            <excludes>
+                <exclude>/javascript/documentPreview.js</exclude>
+            </excludes>
+            <includes>
+                <include>**/*</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/src/main/assemblies/patches-applis-web/platform-extension</directory>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>/javascript/documentPreview.js</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>
