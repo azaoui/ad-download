@@ -46,17 +46,20 @@ public class ContentDownloaderChecker implements ResourceContainer {
 	@Path("checkurl")
 	public Response getConfig(@Context HttpServletRequest request,
 			@Context HttpServletResponse response,
-			@QueryParam("groupID") String groupID) throws Exception {
+			@QueryParam("path") String path) throws Exception {
 
 		JSONObject json = new JSONObject();
 		Identity currentUser = ConversationState.getCurrent().getIdentity();
 	  List<String> spaceListCheck = contentDownloaderCheckerConfig_.getspacesCategories();
-		json.put("hasdownload", true);
-		try {
-			if (!StringUtils.isEmpty(groupID)) {
+		  json.put("hasdownload", true);
+		  try {
+		  String groupPatern = StringUtils.substringAfter(path, "/Groups/spaces/");
+	      String groupName = StringUtils.substringBefore(groupPatern, "/");
+	      String groupID="/spaces/"+groupName;
+			if (!StringUtils.isEmpty(path)) {
 				Space s = spaceService_.getSpaceByGroupId(groupID);
 				if (s != null && !spaceListCheck.isEmpty() && spaceListCheck.contains(groupID) ) {
-					if (!currentUser.isMemberOf(groupID, "download")) {
+					if (!currentUser.isMemberOf(path, "download")) {
 						LOG.info("currentUser : " + currentUser.getUserId()
 								+ " is Manager of " + groupID
 								+ " -> not hiding download button.");

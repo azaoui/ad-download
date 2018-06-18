@@ -100,9 +100,9 @@
 
     fetchdocInfo: function(callback) {
       var self = this;
-      var groupID=self.settings.doc.openUrl.substring(self.settings.doc.openUrl.lastIndexOf("groupId=")+8);
+
       return $.ajax({
-        url: "/rest/metor/checkurl" +"?groupID="+ groupID,
+        url: "/rest/metor/checkurl" +"?path="+ this.settings.doc.path,
         cache: false
       }).done(function (data) {
         if (data.hasdownload != null) {
