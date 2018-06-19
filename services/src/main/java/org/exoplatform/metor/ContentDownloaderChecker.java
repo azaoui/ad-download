@@ -59,10 +59,10 @@ public class ContentDownloaderChecker implements ResourceContainer {
 			if (!StringUtils.isEmpty(path)) {
 				Space s = spaceService_.getSpaceByGroupId(groupID);
 				if (s != null && !spaceListCheck.isEmpty() && spaceListCheck.contains(groupID) ) {
-					if (!currentUser.isMemberOf(path, "download")) {
+					if (!currentUser.isMemberOf(groupID, "download")) {
 						LOG.info("currentUser : " + currentUser.getUserId()
 								+ " is Manager of " + groupID
-								+ " -> not hiding download button.");
+								+ " -> hiding download button.");
 						json.put("hasdownload", false);
 						return Response.ok(json.toString(),
 								MediaType.APPLICATION_JSON).build();
